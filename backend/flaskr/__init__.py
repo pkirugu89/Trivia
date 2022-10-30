@@ -43,7 +43,7 @@ def create_app(test_config=None):
             #categories = category_format()
             #formatted_category =[c.format() for c in categories]
             return jsonify({
-                'Success':True,
+                'success':True,
                 'categories':{category.id: category.type for category in categories},
                 })    
         except Exception:
