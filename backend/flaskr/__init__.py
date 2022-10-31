@@ -150,7 +150,12 @@ def create_app(test_config=None):
         new_category = body.get("category",None)
         
         try:
-            question = Question(question=new_question,answer=new_answer,difficulty=new_difficulty,category=new_category)
+            question = Question(
+                                question=new_question,
+                                answer=new_answer,
+                                difficulty=new_difficulty,
+                                category=new_category
+                               )
             #insert the new question into the db
             question.insert()
             # display the new question on the list
