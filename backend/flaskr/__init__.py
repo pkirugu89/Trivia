@@ -110,17 +110,15 @@ def create_app(test_config=None):
     @app.route('/questions/<int:question_id>',methods=['DELETE'])
     def delete_question(question_id):
         try:
-            q = Question.query.filter_by(Question.id == question_id).one_or_none()
+            q = Question.query.filter(Question.id == question_id).one_or_none()
             # check if question exists
             if q is None:
                 abort(404)
             q.delete()
-            current_questions = paginate_question(request,q)
+            #current_questions = paginate_question(request,q)
             return jsonify({
                 'success':True,
                 'deleted':question_id,
-                'questions':current_questions,
-                'number_of_questions':len(Question.query.all()),
             })
         except Exception as er:
             if '404' in str(er):
